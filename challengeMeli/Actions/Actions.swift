@@ -14,6 +14,7 @@ enum AppAction {
     // Search
     case updateSearchText(String)
     
+    // Result
     case cancelFetchProducts
     case retryRequetFechProducts
     case requestFetchProducts
@@ -22,7 +23,7 @@ enum AppAction {
     case fetchProductsSuccess(SearchResult)
     case fetchProductsFailure(String)
     
-    //ProductDetailAction
+    // Product Detail
     case fetchProductDescription
     case fetchProductPictures
     case fetchProductDescriptionSuccess(ProductDescription)
