@@ -12,26 +12,26 @@ let productDetailMiddleware: Middleware<AppState, AppAction> = { state, action i
     @Inject var productsRepository: ProductsRepositoryProtocol
     
     switch action {
-    case  .fetchProductDescription:
-        return productsRepository.getProductDescription(productId: state.searchResultState.productDetailState.product!.id)
-                    .map { description in
-                        return .fetchProductDescriptionSuccess(description)
-                    }
-                    .catch { error in
-                        return Just(.fetchProductsFailure(error.localizedDescription))
-                    }
-                    .eraseToAnyPublisher()
-    case .fetchProductPictures:
-        return productsRepository.getProductPictures(productId: state.searchResultState.productDetailState.product!.id)
-                    .map { pictures in
-                        return .fetchProductPicturesSuccess(pictures)
-                    }
-                    .catch { error in
-                        return Just(.fetchProductsFailure(error.localizedDescription))
-                    }
-                    .eraseToAnyPublisher()
-    default:
-    break
+        case  .fetchProductDescription:
+            return productsRepository.getProductDescription(productId: state.searchResultState.productDetailState.product!.id)
+                        .map { description in
+                            return .fetchProductDescriptionSuccess(description)
+                        }
+                        .catch { error in
+                            return Just(.fetchProductsFailure(error.localizedDescription))
+                        }
+                        .eraseToAnyPublisher()
+        case .fetchProductPictures:
+            return productsRepository.getProductPictures(productId: state.searchResultState.productDetailState.product!.id)
+                        .map { pictures in
+                            return .fetchProductPicturesSuccess(pictures)
+                        }
+                        .catch { error in
+                            return Just(.fetchProductsFailure(error.localizedDescription))
+                        }
+                        .eraseToAnyPublisher()
+        default:
+            break
     }
     return Empty().eraseToAnyPublisher()
         

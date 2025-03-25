@@ -10,11 +10,8 @@ import Combine
 import SwiftUI
 
 typealias AppStore = Store<AppState, AppAction>
-
-
 final class Store<State, Action>: ObservableObject {
 
-    
     @Published private(set) var state: State
     
     private let reducer: Reducer<State, Action>
