@@ -10,7 +10,7 @@ Buscador es una pequeña app que permite buscar productos usando la API de Merca
 
 # API
 
-Se utilizaron algunos de los endpoints de esta lista developers.mercadolibre.com.ar/es_ar/items-y-busquedas
+Se utilizaron algunos de los endpoints de esta lista https://developers.mercadolibre.com.ar/es_ar/items-y-busquedas
 
 Salvo por el de categoría, no logre que ninguno me funcionará sin token. Generé uno y lo hardcodee para poder realizar las llamadas.
 
