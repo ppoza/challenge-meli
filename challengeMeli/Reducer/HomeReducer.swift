@@ -47,7 +47,7 @@ func navigationReduce(_ state: inout AppState, _ action: NavigationAction) -> Vo
             switch route {
                 case .productDetail(let product):
                 state.searchResultState.productDetailState = ProductDetailState(product: product)
-                case .searchResult(let query):
+                case .searchResult:
                 state.searchResultState = SearchResultState(query: state.searchState.query)
                 default:
                 break

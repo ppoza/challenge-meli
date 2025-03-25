@@ -23,10 +23,8 @@ class ProductsRepository: ProductsRepositoryProtocol {
         return Future<SearchResult, Error> { promise in
             self.stopsRemoteDataSource.getProducts(query: query, offset: offset, limit: limit) { result in
                 switch result {
-                case .success(let remoteData):                    
-                    DispatchQueue.global().asyncAfter(deadline: .now() + 10) {
-                        promise(.success(remoteData))
-                    }
+                case .success(let remoteData):
+                    promise(.success(remoteData))
                 case .failure(let error):
                     promise(.failure(error))
                 }
