@@ -8,7 +8,7 @@
 let appReducer: Reducer<AppState, AppAction> = { state, action in
     switch action {
         case .navigation(let navigationAction):
-            navigationReduce(&state, navigationAction)
+            navigationReducer(&state, navigationAction)
         case .clearError:
             state.alertErrorMessage = nil
         case .showError(let message):

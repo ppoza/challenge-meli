@@ -38,23 +38,3 @@ let homeReducer: Reducer<AppState, AppAction> = { state, action in
             break
     }
 }
-
-
-func navigationReduce(_ state: inout AppState, _ action: NavigationAction) -> Void {
-    switch action {
-        case .navigateTo(let route):
-            state.homeRouteStack.append(route)
-            switch route {
-                case .productDetail(let product):
-                state.searchResultState.productDetailState = ProductDetailState(product: product)
-                case .searchResult:
-                state.searchResultState = SearchResultState(query: state.searchState.query)
-                default:
-                break
-            }
-        case .goBack:
-            _ = state.homeRouteStack.popLast()
-        case .updateNavigationPath(let newPath):
-            state.homeRouteStack = newPath
-    }
-}
