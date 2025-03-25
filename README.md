@@ -6,6 +6,21 @@ Buscador es una pequeña app que permite buscar productos usando la API de Merca
 |----------|:-------------:|------|
 | <img width="250" src="https://github.com/user-attachments/assets/dca4493c-88d6-47a7-99bc-48a09508d2e6"> |  <img width="250" src="https://github.com/user-attachments/assets/a3bad7ae-ea3d-43a6-97ac-49033f674522"> | <img width="250" src="https://github.com/user-attachments/assets/5d2ba881-b5cf-468c-b6f8-2d15d685d426">   |
 
+--- 
+
+# API
+
+Se utilizaron algunos de los endpoints de esta lista developers.mercadolibre.com.ar/es_ar/items-y-busquedas
+
+Salvo por el de categoría, no logre que ninguno me funcionará sin token. Generé uno y lo hardcodee para poder realizar las llamadas.
+
+Endpoints usados:
+* Busqueda: https://api.mercadolibre.com/sites/MLA/search?q=test&offset=0&limit=50
+* Descripción: https://api.mercadolibre.com/items/MLA1473971735/description
+* Imagenes: https://api.mercadolibre.com/items/MLA1473971735
+
+
+---
 # Arquitectura de la aplicación 
 
 Para el desarrollo de la aplicación
@@ -103,7 +118,7 @@ enum SearchAction {
 }
 ```
 
-# `Store`
+## `Store`
 Es el encargado de almacenar el estado de la app, recibe las `Actions` y se encarga de que los `Reducers` las procesen y que le devuelvan un nuevo `State` para finalmente notificarle a la `View` de que hay nuevo `State`y que debe actualizarse. 
 
 ```swift
@@ -121,7 +136,7 @@ final class Store<State, Action>: ObservableObject {
 ```
 
 
-# `Reducer`
+## `Reducer`
 Es quien recibe del `Store` un `Action` y un `State`, en funcion de los últimos aplica la lógica de negocio y modifica el `State`.
 
 ```swift
@@ -137,7 +152,7 @@ let appReducer: Reducer<AppState, AppAction> = { state, action in
 }
 ```
 
-# Mejoras en `Reducer`
+### Mejoras en `Reducer`
 La lógica asociada a cada `Action` puede ser mucha, y al haber muchas de ellas, el  `switch` se vuelve rápidamente muy dificil de leer. Para evitar esto, se propone separar en `Reducer` principal en multiples `Reducer` teniendo en cuenta la división de `AppAction` mencionada anteriormente. Y el proceso de cada `Action` se mueve a una función especifica para ella.
 
 
@@ -193,7 +208,7 @@ func processNavigateTo(state, action) {
 }
 ```
 
-# `Middlewawre`
+## `Middlewawre`
 Es el encargado de inteceptar las `Action` y realizar el efecto de lado (Ej: logging, las llamadas a la API). También puede disparar nuevas `Action`.
 
 Por ejemplo este middlewares se encarga de iniciar una llamada a la API.
@@ -218,8 +233,11 @@ let productDetailMiddleware: Middleware<AppState, AppAction> = { state, action i
 }
 ```
 
+---
 
-
+# Pendientes
+* Manejo de caso de una busqueda sin resultado
+* Manejo de errores en la pantalla del detalel de producto
 
 
 
