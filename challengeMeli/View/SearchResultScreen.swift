@@ -75,7 +75,7 @@ struct ProductItemList: View {
                 // Price and Original Price
                 HStack(alignment: .firstTextBaseline, spacing: 4) {
                     if let price = product.price {
-                        Text(price) // Format price to 2 decimal places
+                        Text(price) 
                             .font(.subheadline)
                             .foregroundColor(.blue)
                     }

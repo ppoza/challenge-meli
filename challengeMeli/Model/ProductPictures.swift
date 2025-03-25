@@ -7,10 +7,8 @@
 
 import Foundation
 
-// MARK: - ProductDetail
 struct ProductPictures: Codable {
     let pictures: [Picture]
-
 }
 
 

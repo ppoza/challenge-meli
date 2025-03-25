@@ -41,7 +41,6 @@ enum TypeEnum: String, Codable {
 }
 
 
-// MARK: - Sort
 struct Sort: Codable {
     let id, name: String
 

@@ -7,7 +7,6 @@
 
 import Foundation
 
-// MARK: - ProductDetail
 struct ProductDescription: Codable {
     let plainText: String
 

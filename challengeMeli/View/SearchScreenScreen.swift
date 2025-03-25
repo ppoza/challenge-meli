@@ -10,7 +10,6 @@ import SwiftUI
 struct SearchScreenScreen: View {
     @EnvironmentObject var store: AppStore
 
-    
     var searchText: String {
         store.state.searchState.query
     }
@@ -19,12 +18,11 @@ struct SearchScreenScreen: View {
         store.state.searchState.isValidQuery
     }
 
-    
     var body: some View {
         VStack {
             SearchBar(text: Binding(
                 get: { searchText },
-                set: { store.dispatch(.updateSearchText($0)) } // Dispatch on text change
+                set: { store.dispatch(.updateSearchText($0)) }
             ), isEnabled: isValidQuery, helpText: LocalizedStringKey.helpSearchText, accessibilityIdentifier: .tagSearchButton , onSearch: {
                 store.dispatch(.navigation(.navigateTo(.searchResult(query: searchText))))
             })
