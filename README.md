@@ -23,7 +23,7 @@ Endpoints usados:
 ---
 # Arquitectura de la aplicación 
 
-Para el desarrollo de la aplicación se uso Swift y SwiftUI. Teniendo en cuenta que SwiftUI es declarativo en función de un estado se elegió un Redux como patrón de arquitectura, el flujo para actualizar un estado es unidireccinal y hay una única source of truth del estado de la app, el `State`. También se uso Combine para el manejo de tareas asincronicas. 
+Para el desarrollo de la aplicación se uso Swift y SwiftUI. Teniendo en cuenta que SwiftUI es declarativo en función de un estado, se elegió un Redux como patrón de arquitectura, el flujo para actualizar el estado es unidireccinal y hay una única source of truth del estado de la app, el `State`. También se uso Combine para el manejo de tareas asincronicas. 
 
 ```mermaid
 graph TD;
@@ -52,7 +52,7 @@ struct AppState {
 ```
 
 ### Mejoras en `State`
-Cuando el `State` comience a crecer lo mejor es separarlo en varios struct. Puede ser pantallas ó funcionalidad.
+Cuando el `State` comience a crecer lo mejor seria separarlo en varios `struct`. Puede ser por pantalla ó funcionalidad.
 
 ```swift
 struct AppState {
@@ -78,7 +78,7 @@ struct SearchState {
 
 
 ## `Action`
-Todo interación del usuario de disparar un `Action`. Las `Action` son definidas como un enum con un case para para una de las acciones que serán disparadas dentro de la app.
+Todo interación del usuario de disparar un `Action`. Las `Action` son definidas como un `enum`.
 
 ```swift
 enum AppAction {
@@ -91,7 +91,7 @@ enum AppAction {
 }
 ```
 ### Mejoras en `Action`
-A medida que crece la app la cantidad de `Action` también, por eso el siguiente paso es separarlas en diferentes enums y agruparos dentro del `AppAction`
+A medida que crece la app, la cantidad de `Action` también, por eso el siguiente paso es separarlas en diferentes `enum` y agruparlos dentro del `AppAction`
 
 
 ```swift
@@ -117,7 +117,7 @@ enum SearchAction {
 ```
 
 ## `Store`
-Es el encargado de almacenar el estado de la app, recibe las `Actions` y se encarga de que los `Reducers` las procesen y que le devuelvan un nuevo `State` para finalmente notificarle a la `View` de que hay nuevo `State`y que debe actualizarse. 
+Es el encargado de almacenar el estado de la app, recibe las `Actions` y se se comunica con los `Reducers` para que las procesen y le devuelvan un nuevo `State`, para finalmente notificarle a la `View` de que hay nuevo `State` y que esta se actualice.
 
 ```swift
 final class Store<State, Action>: ObservableObject {
@@ -151,8 +151,7 @@ let appReducer: Reducer<AppState, AppAction> = { state, action in
 ```
 
 ### Mejoras en `Reducer`
-La lógica asociada a cada `Action` puede ser mucha, y al haber muchas de ellas, el  `switch` se vuelve rápidamente muy dificil de leer. Para evitar esto, se propone separar en `Reducer` principal en multiples `Reducer` teniendo en cuenta la división de `AppAction` mencionada anteriormente. Y el proceso de cada `Action` se mueve a una función especifica para ella.
-
+La lógica asociada a cada `Action` puede ser mucha, y al haber muchas de ellas, el  `switch` se vuelve rápidamente muy dificil de leer. Para evitar esto, se propone separar el `Reducer` principal en multiples `Reducer` teniendo en cuenta la división de `AppAction` mencionada anteriormente. Y el proceso de cada `Action` se mueve a una función especifica para ella.
 
 ```swift
 let appReducer: Reducer<AppState, AppAction> = { state, action in
@@ -206,6 +205,11 @@ func processNavigateTo(state, action) {
 }
 ```
 
+## View
+Es la UI, con quien interactua el usuario. La  `View` no midifica el `State`, solo lo lee para saber como dibujarse, también en la encargada de disparar las acciones mediane la funció `dispatch(Action)` del `Store`.
+Para esta app estamos usando SwiftUI para el desarrollo de la UI.
+
+
 ## `Middlewawre`
 Es el encargado de inteceptar las `Action` y realizar el efecto de lado (Ej: logging, las llamadas a la API). También puede disparar nuevas `Action`.
 
@@ -233,9 +237,16 @@ let productDetailMiddleware: Middleware<AppState, AppAction> = { state, action i
 
 ---
 
-# Pendientes
+# Pendiente de Documentas
+* Injecciónd de dependencias
+* Combine y cancelación de llamadas a la API
+* Sistema de Theme aplicado a la UI
+
+# Pendientes de hacer
 * Manejo de caso de una busqueda sin resultado
 * Manejo de errores en la pantalla del detalel de producto
+* Más Test
+
 
 
 
