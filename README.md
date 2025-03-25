@@ -206,8 +206,7 @@ func processNavigateTo(state, action) {
 ```
 
 ## View
-Es la UI, con quien interactua el usuario. La  `View` no midifica el `State`, solo lo lee para saber como dibujarse, también en la encargada de disparar las acciones mediane la funció `dispatch(Action)` del `Store`.
-Para esta app estamos usando SwiftUI para el desarrollo de la UI.
+Es la UI, con quien interactua el usuario. La `View` no midifica el `State`, solo lo lee para saber como dibujarse, también en la encargada de disparar las acciones mediane la función `dispatch(Action)` del `Store`.
 
 
 ## `Middlewawre`
@@ -237,8 +236,8 @@ let productDetailMiddleware: Middleware<AppState, AppAction> = { state, action i
 
 ---
 
-# Pendiente de Documentas
-* Injecciónd de dependencias
+# Pendiente de Documentar
+* Injección de dependencias
 * Combine y cancelación de llamadas a la API
 * Sistema de Theme aplicado a la UI
 
