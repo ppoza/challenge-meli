@@ -10,7 +10,7 @@ Buscador es una pequeña app que permite buscar productos usando la API de Merca
 
 Para el desarrollo de la aplicación
 
-Se uso Swift y SwiftUI. Teniendo en cuenta que SwiftUI es declarativo en función de un estado se elegió un Redux como patrón de arquitectura, el flujo para actualizar un estado es unidireccinal y hay una única source of truth del estado de la app, el `State`
+Se uso Swift y SwiftUI. Teniendo en cuenta que SwiftUI es declarativo en función de un estado se elegió un Redux como patrón de arquitectura, el flujo para actualizar un estado es unidireccinal y hay una única source of truth del estado de la app, el `State`. También se uso Combine para el manejo de tareas asincronicas. 
 
 ```mermaid
 graph TD;
@@ -191,6 +191,35 @@ func processNavigateTo(state, action) {
         break
     }
 }
-
-
 ```
+
+# `Middlewawre`
+Es el encargado de inteceptar las `Action` y realizar el efecto de lado (Ej: logging, las llamadas a la API). También puede disparar nuevas `Action`.
+
+Por ejemplo este middlewares se encarga de iniciar una llamada a la API.
+
+```swift
+let productDetailMiddleware: Middleware<AppState, AppAction> = { state, action in
+    
+    @Inject var productsRepository: ProductsRepositoryProtocol
+    
+    switch action {
+    case  .fetchProductDescription:
+        return productsRepository.getProductDescription(productId: state.searchResultState.productDetailState.product!.id)
+                    .map { description in
+                        return .fetchProductDescriptionSuccess(description)
+                    }
+                    .catch { error in
+                        return Just(.fetchProductsFailure(error.localizedDescription))
+                    }
+                    .eraseToAnyPublisher()
+    ...
+    }   
+}
+```
+
+
+
+
+
+
