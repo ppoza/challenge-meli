@@ -243,9 +243,9 @@ let productDetailMiddleware: Middleware<AppState, AppAction> = { state, action i
 * Sistema de Theme aplicado a la UI
 
 # Pendientes de hacer
-* Manejo de caso de una busqueda sin resultado
+* Manejo del caso de una busqueda sin resultado
 * Manejo de errores en la pantalla del detalel de producto
-* Más Test
+* Más Tests
 
 
 
