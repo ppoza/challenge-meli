@@ -1,10 +1,10 @@
 # Buscador
 
-Buscador es una pequeña app que permite buscar productos usando la API de Mercado Libre. 
+`Buscador` es una pequeña app que permite buscar productos para los cuales Mercado Libre cuenta con información principal (títulos, fotos, descripciones y ficha técnica), con el fin de crear publicaciones normales o de catálogo a partir de estos datos. Además, muestra el mejor precio en la plataforma para que puedas competir con otros vendedores..
 
-| Buscardor | Resultado | Detalle Producto |
-|----------|:-------------:|------|
-| <img width="250" src="https://github.com/user-attachments/assets/dca4493c-88d6-47a7-99bc-48a09508d2e6"> |  <img width="250" src="https://github.com/user-attachments/assets/a3bad7ae-ea3d-43a6-97ac-49033f674522"> | <img width="250" src="https://github.com/user-attachments/assets/5d2ba881-b5cf-468c-b6f8-2d15d685d426">   |
+| Buscardor | Resultado | Producto disponible<br>para la venta | Producto no disponible<br>para la venta |
+|----------|:-------------:|------|---|
+| <img width="220" src="https://github.com/user-attachments/assets/dca4493c-88d6-47a7-99bc-48a09508d2e6"> |  <img width="220" src="https://github.com/user-attachments/assets/289dd0cc-ef4f-4839-8df2-a411fefce393"> | <img width="220" src="https://github.com/user-attachments/assets/785d4a10-cdbe-442c-8108-7dcf619b4332"> | <img width="220" src="https://github.com/user-attachments/assets/b12dee88-993f-4fe8-a810-a44fc5d0b777"> |
 
 --- 
 
@@ -15,8 +15,8 @@ Se utilizaron algunos de los endpoints de esta lista https://developers.mercadol
 Salvo por el de categoría, no logre que ninguno me funcionará sin token. Generé uno y lo hardcodee para poder realizar las llamadas.
 
 Endpoints usados:
-* Busqueda: https://api.mercadolibre.com/sites/MLA/search?q=test&offset=0&limit=50
-* Descripción: https://api.mercadolibre.com/items/MLA1473971735/description
+* Busqueda: https://api.mercadolibre.com/products/search?status=active&site_id=MLA&q=iphone
+* Descripción: https://api.mercadolibre.com/products/MLA40287843
 * Imagenes: https://api.mercadolibre.com/items/MLA1473971735
 
 
