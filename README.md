@@ -10,9 +10,7 @@
 
 # API
 
-Se utilizaron algunos de los endpoints de esta lista https://developers.mercadolibre.com.ar/es_ar/items-y-busquedas
-
-Salvo por el de categoría, no logre que ninguno me funcionará sin token. Generé uno y lo hardcodee para poder realizar las llamadas.
+Se utilizaron algunos de los endpoints de la seccion de Catágolos: https://developers.mercadolibre.com.ar/es_ar/items-y-busquedas
 
 Endpoints usados:
 * Busqueda: https://api.mercadolibre.com/products/search?status=active&site_id=MLA&q=iphone
