@@ -23,7 +23,7 @@ class ApiService: ApiServiceProtocol {
                encoding: JSONEncoding.default,
                headers: [
                 "Content-Type": "application/json",
-                "Authorization": "Bearer APP_USR-6077452762930250-050423-66bc89358c7a667588bb76abfa3a3075__LD_LA__-139545719"
+                "Authorization": "Bearer APP_USR-6077452762930250-040913-4256bb245d432c351691ada073cb38e3-139545719"
                ]
         )
         .validate()

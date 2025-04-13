@@ -14,25 +14,25 @@ enum ProductAttributeID: String {
 struct Product: Codable {
     let id: String
     let title: String
-    let thumbnail: String?
     let price: Double?
     let originalPrice: Double?
     let attributes: [Attribute]?
+    let pictures: [Picture]
 
     enum CodingKeys: String, CodingKey {
         case id
-        case title
-        case thumbnail
+        case title = "name"
         case originalPrice = "original_price"
         case price
         case attributes
+        case pictures
     }
     
     init(from decoder: Decoder) throws {
        let container = try decoder.container(keyedBy: CodingKeys.self)
        self.id = try container.decode(String.self, forKey: .id)
        self.title = try container.decode(String.self, forKey: .title)
-       self.thumbnail = try? container.decode(String.self, forKey: .thumbnail)
+       self.pictures = try container.decode([Picture]?.self, forKey: .pictures) ?? []
        self.price = try? container.decode(Double.self, forKey: .price)
        self.originalPrice = try? container.decode(Double.self, forKey: .originalPrice)
        self.attributes = try? container.decode([Attribute].self, forKey: .attributes)
@@ -50,14 +50,8 @@ extension Product {
 }
 
 struct Attribute: Codable {
-    let id: String
-    let value: String
-
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.id = try container.decode(String.self, forKey: .id)
-        self.value = try container.decode(String.self, forKey: .value)
-    }
+    let id: String?
+    let value: String?
     
     enum CodingKeys: String, CodingKey {
         case id

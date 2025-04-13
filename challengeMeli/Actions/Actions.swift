@@ -24,9 +24,10 @@ enum AppAction {
     case fetchProductsFailure(String)
     
     // Product Detail
-    case fetchProductDescription
+    case fetchProductDescription(String)
     case fetchProductPictures
     case fetchProductDescriptionSuccess(ProductDescription)
+    case fetchProductDescriptionFailure(String)
     case fetchProductPicturesSuccess(ProductPictures)
 }
 

@@ -9,9 +9,9 @@ import Alamofire
 struct Constants {
     static let baseURL = "https://api.mercadolibre.com"
     static let site = "MLA"
-    static let offset = 5
+    static let status = "active"
+    static let offset = 10
 }
-
 
 struct Request<Response: Decodable> {
     let method: Alamofire.HTTPMethod
@@ -23,7 +23,7 @@ struct Request<Response: Decodable> {
 
 func getProductsRequest(query: String, offset: Int, limit: Int) -> Request<SearchResult> {
     return Request(
-        method: .get, url: Constants.baseURL + "/sites/\(Constants.site)/search?q=\(query)&offset=\(offset)&limit=\(limit)", data: nil, header: nil
+        method: .get, url: Constants.baseURL + "/products/search?search?status=\(Constants.status)&site_id=\(Constants.site)&q=\(query)&offset=\(offset)&limit=\(limit)", data: nil, header: nil
     )
 }
 
@@ -35,6 +35,6 @@ func getProductPicturesRequest(productId: String) -> Request<ProductPictures> {
 
 func getProductDescriptionRequest(productId: String) -> Request<ProductDescription> {
     return Request(
-        method: .get, url: Constants.baseURL + "/items/\(productId)/description", data: nil, header: nil
+        method: .get, url: Constants.baseURL + "/products/\(productId)", data: nil, header: nil
     )
 }

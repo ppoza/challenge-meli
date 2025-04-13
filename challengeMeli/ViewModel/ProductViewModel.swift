@@ -16,9 +16,10 @@ struct ProductViewModel: Hashable {
     init(product: Product) {
         self.id = product.id
         self.title = product.title
-        self.price =  product.price != nil ? String.init(format: "$%.2f", product.price!) : String.priceNotFound
-        self.originalPrice = product.originalPrice != nil ? String.init(format: "$%.2f", product.originalPrice!) : nil
-        self.thumbnail = product.thumbnail
+        self.price =  product.price != nil ? product.price?.formattedPrice() : String.priceNotFound
+        self.originalPrice = product.originalPrice != nil ? product.originalPrice?.formattedPrice() : nil
+        
+        self.thumbnail = product.pictures.first?.url
         self.brand =  product.getAttributeValue(for: .brand)
     }
 }

@@ -11,24 +11,28 @@ struct SearchResultView: View {
     @EnvironmentObject var store: AppStore
     var body: some View {
         VStack {
-            List {
-                ForEach(store.state.searchResultState.products, id:\.title) { product in
-                    Button(action: {
-                        store.dispatch(.navigation(.navigateTo(.productDetail(product))))
-                    }) {
-                        ProductItemList(product)
+            if !store.state.searchResultState.thereAreMorePages &&
+               store.state.searchResultState.products.isEmpty {
+                MessageView(message: .productsNotFound, type: .info).padding()
+            } else {
+                List {
+                    ForEach(store.state.searchResultState.products, id:\.id) { product in
+                        Button(action: {
+                            store.dispatch(.navigation(.navigateTo(.productDetail(product))))
+                        }) {
+                            ProductItemList(product)
+                        }
+                        .buttonStyle(PlainButtonStyle())
                     }
-                    .buttonStyle(PlainButtonStyle())
-                }
-                
-                if store.state.searchResultState.isLoading {
-                    HStack {
-                        Spacer()
-                        ProgressView().id(UUID())
-                        Spacer()
+                    if store.state.searchResultState.isLoading {
+                        HStack {
+                            Spacer()
+                            ProgressView().id(UUID())
+                            Spacer()
+                        }
                     }
-                }
-            }.accessibilityIdentifier(.tagSearchResulScreen)
+                }.accessibilityIdentifier(.tagSearchResulScreen)
+            }
             if  !store.state.searchResultState.isLoading,
                 let error = store.state.searchResultState.searchError {
                 ErrorView(error: error) {
@@ -55,24 +59,20 @@ struct ProductItemList: View {
     
     var body: some View {
         HStack(alignment: .top, spacing: 16) {
-            RemoteImageView(urlString: product.thumbnail)
+            RemoteImageView(url: product.thumbnail)
                 .frame(width: 100, height: 100)
                 .cornerRadius(8)
             
             
             VStack(alignment: .leading, spacing: 8) {
-                // Brand
                 if let brand = product.brand {
                     Text(brand)
                         .font(.subheadline)
                         .foregroundColor(.gray)
                 }
-                // Title
                 Text(product.title)
                     .font(.headline)
                     .lineLimit(2)
-                
-                // Price and Original Price
                 HStack(alignment: .firstTextBaseline, spacing: 4) {
                     if let price = product.price {
                         Text(price) 

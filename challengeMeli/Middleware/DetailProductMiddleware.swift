@@ -12,13 +12,13 @@ let productDetailMiddleware: Middleware<AppState, AppAction> = { state, action i
     @Inject var productsRepository: ProductsRepositoryProtocol
     
     switch action {
-        case  .fetchProductDescription:
-            return productsRepository.getProductDescription(productId: state.searchResultState.productDetailState.product!.id)
+        case  .fetchProductDescription(let id):        
+            return productsRepository.getProductDescription(productId: id)
                         .map { description in
                             return .fetchProductDescriptionSuccess(description)
                         }
                         .catch { error in
-                            return Just(.fetchProductsFailure(error.localizedDescription))
+                            return Just(.fetchProductDescriptionFailure(error.localizedDescription))
                         }
                         .eraseToAnyPublisher()
         case .fetchProductPictures:
@@ -27,7 +27,7 @@ let productDetailMiddleware: Middleware<AppState, AppAction> = { state, action i
                             return .fetchProductPicturesSuccess(pictures)
                         }
                         .catch { error in
-                            return Just(.fetchProductsFailure(error.localizedDescription))
+                            return Empty().eraseToAnyPublisher()
                         }
                         .eraseToAnyPublisher()
         default:

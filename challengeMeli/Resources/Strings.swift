@@ -18,6 +18,18 @@ extension LocalizedStringKey {
     static let routeNotFound = LocalizedStringKey("route_not_found")
     static let helpSearchText = LocalizedStringKey("help_search_text")
     static let retry = LocalizedStringKey("retry")
+    static let sellThisProduct = LocalizedStringKey("sell_this_product")
+    
+    
+    static let description = LocalizedStringKey("description")
+    static let productWithoutDescription = LocalizedStringKey("product_without_description")
+    
+    static let unavaliableProductToSell = LocalizedStringKey("unavaliable_product_to_sell")
+    static let pickAProduct = LocalizedStringKey("pick_a_product")
+    static let titleBuyBoxWinner = LocalizedStringKey("title_buy_box_winner")
+    
+    
+    static let productsNotFound = LocalizedStringKey("products_not_found")
 }
 
 extension String {

@@ -9,14 +9,26 @@ import SwiftUI
 import Kingfisher
 
 struct RemoteImageView: View {
-    let urlString: String?
+    let url: String?
 
     var body: some View {
-        KFImage(urlString != nil ? URL(string: urlString!) : nil)
+        KFImage(url != nil ? URL(string: url!) : nil)
             .resizable()
+            .placeholder { _ in
+                Image(systemName: "camera.fill")
+                    .resizable()
+                    .scaledToFit()
+                    .padding(24)
+                    .foregroundStyle(AppColor.placehoderForeground.color)
+                    .background(AppColor.placeholderBackground.color)
+            }
             .aspectRatio(contentMode: .fit)
             .frame(maxWidth: .infinity)
             .background(Color.clear)
             .cornerRadius(8)
     }
+}
+
+#Preview {
+    RemoteImageView(url: "")
 }

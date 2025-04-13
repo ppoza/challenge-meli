@@ -20,7 +20,8 @@ class ProductsRepository: ProductsRepositoryProtocol {
     
     
     func getProducts(query: String, offset: Int, limit: Int) -> AnyPublisher<SearchResult, Error> {
-        return Future<SearchResult, Error> { promise in
+        return Future<SearchResult, Error> { [weak self] promise in
+            guard let self = self else { return }
             self.stopsRemoteDataSource.getProducts(query: query, offset: offset, limit: limit) { result in
                 switch result {
                 case .success(let remoteData):
@@ -34,7 +35,8 @@ class ProductsRepository: ProductsRepositoryProtocol {
     }
     
     func getProductPictures(productId: String) -> AnyPublisher<ProductPictures, Error> {
-        return Future<ProductPictures, Error> { promise in
+        return Future<ProductPictures, Error> { [weak self] promise in
+            guard let self = self else { return }
             self.stopsRemoteDataSource.getProductPictures(productId: productId) { result in
                 switch result {
                 case .success(let remoteData):
@@ -49,7 +51,8 @@ class ProductsRepository: ProductsRepositoryProtocol {
     
     
     func getProductDescription(productId: String) -> AnyPublisher<ProductDescription, Error> {
-        return Future<ProductDescription, Error> { promise in
+        return Future<ProductDescription, Error> { [weak self] promise in
+            guard let self = self else { return }
             self.stopsRemoteDataSource.getProductDescription(productId: productId) { result in
                 switch result {
                 case .success(let remoteData):

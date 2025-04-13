@@ -1,20 +1,14 @@
 struct SearchResult: Codable {
-    let siteID: String
-    let query: String
     let paging: Paging
     let products: [Product]
 
     enum CodingKeys: String, CodingKey {
-        case siteID = "site_id"
-        case query
         case paging
         case products = "results"
     }
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.siteID = try container.decode(String.self, forKey: .siteID)
-        self.query = try container.decode(String.self, forKey: .query)
         self.paging = try container.decode(Paging.self, forKey: .paging)
         self.products = try container.decode([Product].self, forKey: .products)
     }
@@ -52,18 +46,16 @@ struct Sort: Codable {
 }
 
 struct Paging: Codable {
-    let total, primaryResults, offset, limit: Int
+    let total, offset, limit: Int
 
     enum CodingKeys: String, CodingKey {
         case total
-        case primaryResults = "primary_results"
         case offset, limit
     }
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.total = try container.decode(Int.self, forKey: .total)
-        self.primaryResults = try container.decode(Int.self, forKey: .primaryResults)
         self.offset = try container.decode(Int.self, forKey: .offset)
         self.limit = try container.decode(Int.self, forKey: .limit)
     }

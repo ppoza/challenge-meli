@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "es-419",
   "strings" : {
+    "%@:" : {
+
+    },
     "buy_now" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -14,6 +17,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Comprar ahora"
+          }
+        }
+      }
+    },
+    "description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Descripción"
           }
         }
       }
@@ -169,6 +183,39 @@
         }
       }
     },
+    "pick_a_product" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Que configuración quieres vender?"
+          }
+        }
+      }
+    },
+    "product_without_description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Producto sin descripción"
+          }
+        }
+      }
+    },
+    "products_not_found" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No encontramos resultados para tu consulta"
+          }
+        }
+      }
+    },
     "retry" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -249,6 +296,39 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Buscador"
+          }
+        }
+      }
+    },
+    "sell_this_product" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vender este producto"
+          }
+        }
+      }
+    },
+    "title_buy_box_winner" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mejor precio actual: "
+          }
+        }
+      }
+    },
+    "unavaliable_product_to_sell" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No es posible vender este producto"
           }
         }
       }

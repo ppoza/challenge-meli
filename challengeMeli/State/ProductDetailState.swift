@@ -7,7 +7,8 @@
 //
 
 struct ProductDetailState {
+    var isLoading = true
     var product: ProductViewModel? = nil
-    var productDescription: ProductDescription? = nil
+    var productDescription: ProductDescriptionViewModel? = nil
     var productPictures: ProductPictures? = nil
 }
