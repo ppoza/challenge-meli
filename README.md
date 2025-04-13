@@ -1,6 +1,6 @@
 # Buscador
 
-`Buscador` es una pequeña app que permite buscar productos para los cuales Mercado Libre cuenta con información principal (títulos, fotos, descripciones y ficha técnica), con el fin de crear publicaciones normales o de catálogo a partir de estos datos. Además, muestra el mejor precio en la plataforma para que puedas competir con otros vendedores..
+`Buscador` es una pequeña app que permite buscar productos para los cuales Mercado Libre cuenta con información principal (títulos, fotos, descripciones y ficha técnica), con el fin de crear publicaciones normales o de catálogo a partir de estos datos. Además, muestra el mejor precio en la plataforma para que puedas competir con otros vendedores.
 
 | Buscardor | Resultado | Producto disponible<br>para la venta | Producto no disponible<br>para la venta |
 |----------|:-------------:|------|---|
